@@ -1,2 +1,17 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<h1>Link Shortener</h1>
+<p> </p>
+
+<form action='/url' method="post">
+	Enter url:
+		<input type= "text" name="user_input_long_url">
+		<input type= "submit" value="Submit">
+</form>
+
+<% @urls.each do |link| %>
+
+	<%= link.original_url %> - <%= link.shortened_url %> 
+	<a href= "<%= link.shortened_url %> "%> <%= link.shortened_url %> </a>
+
+	<br>
+
+<% end %>

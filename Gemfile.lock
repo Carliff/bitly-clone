@@ -25,9 +25,8 @@ GEM
     minitest (5.6.1)
     multi_json (1.11.0)
     pg (0.18.2)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
-    rack (1.6.1)
+    puma (2.15.3)
+    rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -92,3 +91,6 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-contrib
   thin
+
+BUNDLED WITH
+   1.10.6
