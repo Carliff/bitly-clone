@@ -1,5 +1,5 @@
 <h1>Link Shortener</h1>
-<p> </p>
+<p>Please enter a valid URL with http:// or https:// </p>
 
 <form action='/url' method="post">
 	Enter url:
@@ -7,9 +7,22 @@
 		<input type= "submit" value="Submit">
 </form>
 
+
+<% if @url && @url.errors.any? %>
+
+	<h2> Errors in Input </h2>
+	<ul>
+		<% @url.errors.full_messages.each do |x| %>
+			<li><%= x %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+
+
 <% @urls.each do |link| %>
 
-	<%= link.original_url %> - <%= link.shortened_url %> 
+	<%= link.original_url %> -  
 	<a href= "<%= link.shortened_url %> "%> <%= link.shortened_url %> </a>
 
 	<br>

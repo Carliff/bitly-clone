@@ -3,15 +3,30 @@ get '/' do
   erb :"static/index"
 end
 
-post'/url' do
+post '/url' do
 	p params[:user_input_long_url]
 	url = Url.create(original_url: params[:user_input_long_url])
 
 	redirect "/"
 end
 
-get "/:user_input_long_url" do
-	url = Url.find_by(shortened_url: params[:user_input_long_url])
+# post '/url' do
+#    # create a new Url
+#    p params[:user_input_long_url]
+#    @new = Url.create(original_url: params[:user_input_long_url])
+#    p "[LOG] Errors? = #{@new.errors.any?}"
+#    if @new.errors.any?
+#     @url = Url.all
+#     @urls = Url.all
+#     erb :index
+#    else
+#      redirect to '/'
+#    end
+#  end
+
+
+get "/:shortened_url" do
+	url = Url.find_by(shortened_url: params[:shortened_url])
 
 	unless url.nil?
 		redirect url.original_url
