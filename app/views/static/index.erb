@@ -1,30 +1,51 @@
-<h1>Link Shortener</h1>
-<p>Please enter a valid URL with http:// or https:// </p>
+<html>
+	<head>
+		<title> Link Shortener </title>
+		<link rel="stylesheet" type="text/css" href="css/application.css" />
+	</head>
 
-<form action='/url' method="post">
-	Enter url:
-		<input type= "text" name="user_input_long_url">
-		<input type= "submit" value="Submit">
-</form>
+	<body>
+		<div id="container">
 
+			<div id="header">
+				<h1>Link Shortener</h1>
+			</div>
 
-<% if @url && @url.errors.any? %>
+			<div id="nav">
+				<h3>Navigation</h3>
+				<p><a class="selected" href="">Home</a> <a href="">About <a href="">Contact </p>
+			</div>
 
-	<h2> Errors in Input </h2>
-	<ul>
-		<% @url.errors.full_messages.each do |x| %>
-			<li><%= x %></li>
-		<% end %>
-	</ul>
-<% end %>
+			<div id="main">
+				<div id="content">
+					<p>Please enter a valid URL with http:// or https:// </p>
+				</div>
+				
 
+				<div id="shortener">
+					<form action='/url' method="post">
+						Enter url:
+						<input type= "url" name="user_input_long_url">
+						<input type= "submit" value="Submit">
+					</form>
 
+					<%if @new && @new.errors.any? %>
+						<% @new.errors.messages.each do |x| %>
+  						<p><%= x %></p>
+						<%end%>
+					<%end%> 
 
-<% @urls.each do |link| %>
+					<% @urls.each do |link| %>
+						<%= link.original_url %> -  
+						<a href= "<%= link.shortened_url %> "%> <%= link.shortened_url %> </a>
+						<br>
+					<% end %>
+				</div>
+			</div>
 
-	<%= link.original_url %> -  
-	<a href= "<%= link.shortened_url %> "%> <%= link.shortened_url %> </a>
-
-	<br>
-
-<% end %>
+			<div id="footer">
+				Copyright &copy; 2015 Carliff Rizal Carleel
+			</div>
+		</div>
+	</body>
+</html>
