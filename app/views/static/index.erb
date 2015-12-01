@@ -13,7 +13,7 @@
 
 			<div id="nav">
 				<h3>Navigation</h3>
-				<p><a class="selected" href="">Home</a> <a href="">About <a href="">Contact </p>
+				<p><a class="selected" href="">Home</a> <a href="">About </a><a href="">Contact </a></p>
 			</div>
 
 			<div id="main">
@@ -29,14 +29,10 @@
 						<input type= "submit" value="Submit">
 					</form>
 
-					<%if @new && @new.errors.any? %>
-						<% @new.errors.messages.each do |x| %>
-  						<p><%= x %></p>
-						<%end%>
-					<%end%> 
+					
 
 					<% @urls.each do |link| %>
-						<%= link.original_url %> -  
+						<%= link.original_url %> ==>  
 						<a href= "<%= link.shortened_url %> "%> <%= link.shortened_url %> </a>
 						<br>
 					<% end %>
